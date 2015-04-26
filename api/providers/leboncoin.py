@@ -50,11 +50,11 @@ class LeBonCoinProvider:
                     house.title = itemSoup.select('[itemprop="name"]')[0].string
                     logging.debug('Found title : %s', house.title)
 
-                if len(itemSoup.select('[itemprop="addressLocality"]')) > 0:
+                if len(itemSoup.select('[itemprop="name"]')) > 0:
                     house.city = itemSoup.select('[itemprop="addressLocality"]')[0].string
                     logging.debug('Found city : %s', house.city)
 
-                if len(itemSoup.select('[itemprop="postalCode"]')) > 0:
+                if len(itemSoup.select('[itemprop="name"]')) > 0:
                     house.zipCode = itemSoup.select('[itemprop="postalCode"]')[0].string
                     logging.debug('Found zip code : %s', house.zipCode)
 

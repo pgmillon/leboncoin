@@ -43,11 +43,14 @@ module.exports = function (grunt) {
           },
         ]
       },
-      bower: {
+      static: {
         files: [
           {
             expand: true,
-            src: ['bower_components/**',],
+            src: [
+              'bower_components/**',
+              'img/**'
+            ],
             dest: '_site/'
           },
         ]
