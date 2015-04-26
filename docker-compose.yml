@@ -1,0 +1,6 @@
+api:
+  build: .
+  volumes:
+    - ./:/docker
+  ports:
+    - "5000:8888"

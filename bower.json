@@ -1,0 +1,10 @@
+{
+  "name": "leboncoin",
+  "dependencies": {
+    "bootstrap": "~3.3.0",
+    "font-awesome": "~4.3.0",
+    "mustache.js": "~2.0.0",
+    "elusive-iconfont": "git@github.com:reduxframework/elusive-iconfont.git#master",
+    "blueimp-bootstrap-image-gallery": "~3.1.1"
+  }
+}

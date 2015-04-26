@@ -1,0 +1,74 @@
+doctype html
+html(lang="fr")
+    head
+        title= "Le Bon Coin"
+        link(href="css/main.css" rel="styleSheet")
+        link(href="bower_components/blueimp-gallery/css/blueimp-gallery.min.css" rel="styleSheet")
+        link(href="bower_components/blueimp-bootstrap-image-gallery/css/bootstrap-image-gallery.min.css" rel="styleSheet")
+        script(type="x-tmpl-mustache" id="houseTemplate")
+            .panel.panel-default
+                .panel-heading
+                    | {{title}} - {{price}} € - &nbsp;
+                    a(href="{{url}}") Lien
+                .panel-body
+                    | {{description}}
+                    .images
+                        | {{#images}}
+                        a(href="{{.}}").housePic
+                            img(src="{{.}}").img-thumbnail
+                        | {{/images}}
+
+    body
+        #blueimp-gallery.blueimp-gallery
+            .slides
+            h3.title
+            a.prev
+            a.next
+            a.close
+            a.play-pause
+            ol.indicator
+            .modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            button(type="button",aria-hidden="true").close &times;
+                            h4.modal-title
+                        .modal-body.next
+                        .modal-footer
+                            button(type="button").btn.btn-default.pull-left.prev
+                                i.glyphicon.glyphicon-chevron-left Previous
+                            button(type="button").btn.btn-primary.next
+                                | Next
+                                i.glyphicon.glyphicon-chevron-right
+        .container
+            .col-md-4.lbc-menu
+                div.list-group
+                    a.list-group-item.lbc-city Bucquoy 62116
+                    a.list-group-item.lbc-city Avesnes-le-Comte 62810
+                    a.list-group-item.lbc-city Pas-en-Artois 62760
+                    a.list-group-item.lbc-city Grand-Rullecourt 62810
+                    a.list-group-item.lbc-city Beaumetz-l%E8s-Loges 62123
+                    a.list-group-item.lbc-city Izel-les-Hameaux 62690
+                    a.list-group-item.lbc-city Berles-Monchel 62690
+                    a.list-group-item.lbc-city Aubigny-en-Artois 62690
+                    a.list-group-item.lbc-city Habarcq 62123
+                    a.list-group-item.lbc-city Duisans 62161
+                    a.list-group-item.lbc-city Wailly 62217
+                    a.list-group-item.lbc-city Boiry-Sainte-Rictrude 62175
+                    a.list-group-item.lbc-city H%E9nin-sur-Cojeul 62128
+                    a.list-group-item.lbc-city Ecurie 62223
+                    a.list-group-item.lbc-city Mont-Saint-Eloi 62144
+                    a.list-group-item.lbc-city Tincques 62127
+                    a.list-group-item.lbc-city Ligny-Saint-Flochel 62127
+                    a.list-group-item.lbc-city Buneville 62130
+                    a.list-group-item.lbc-city Penin 62127
+                    a.list-group-item.lbc-city Montenescourt 62123
+                    a.list-group-item.lbc-city Vis-en-Artois 62156
+            #lbc-content.col-md-8
+        //#leboncoin
+        script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true")
+        script(src="/bower_components/jquery/dist/jquery.min.js")
+        script(src="/bower_components/mustache.js/mustache.min.js")
+        script(src="/bower_components/blueimp-gallery/js/jquery.blueimp-gallery.min.js")
+        script(src="/bower_components/blueimp-bootstrap-image-gallery/js/bootstrap-image-gallery.min.js")
+        script(src="/js/main.js")
