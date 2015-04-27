@@ -17,6 +17,10 @@ html(lang="fr")
                         a(href="{{.}}").housePic
                             img(src="{{.}}").img-thumbnail
                         | {{/images}}
+        script(type="x-tmpl-mustache" id="pagerTemplate")
+          .panel.panel-default
+            .panel-body
+              {{count}} annonce(s)
 
     body
         #blueimp-gallery.blueimp-gallery
@@ -41,30 +45,35 @@ html(lang="fr")
                                 | Next
                                 i.glyphicon.glyphicon-chevron-right
         .container
-            .col-md-4.lbc-menu
+          .row
+            .col-md-4.col-sm-4.lbc-menu
                 div.list-group
-                    a.list-group-item.lbc-city Bucquoy 62116
-                    a.list-group-item.lbc-city Avesnes-le-Comte 62810
-                    a.list-group-item.lbc-city Pas-en-Artois 62760
-                    a.list-group-item.lbc-city Grand-Rullecourt 62810
-                    a.list-group-item.lbc-city Beaumetz-l%E8s-Loges 62123
-                    a.list-group-item.lbc-city Izel-les-Hameaux 62690
-                    a.list-group-item.lbc-city Berles-Monchel 62690
-                    a.list-group-item.lbc-city Aubigny-en-Artois 62690
-                    a.list-group-item.lbc-city Habarcq 62123
-                    a.list-group-item.lbc-city Duisans 62161
-                    a.list-group-item.lbc-city Wailly 62217
-                    a.list-group-item.lbc-city Boiry-Sainte-Rictrude 62175
-                    a.list-group-item.lbc-city H%E9nin-sur-Cojeul 62128
-                    a.list-group-item.lbc-city Ecurie 62223
-                    a.list-group-item.lbc-city Mont-Saint-Eloi 62144
-                    a.list-group-item.lbc-city Tincques 62127
-                    a.list-group-item.lbc-city Ligny-Saint-Flochel 62127
-                    a.list-group-item.lbc-city Buneville 62130
-                    a.list-group-item.lbc-city Penin 62127
-                    a.list-group-item.lbc-city Montenescourt 62123
-                    a.list-group-item.lbc-city Vis-en-Artois 62156
-            #lbc-content.col-md-8
+                    a.list-group-item.lbc-city(data-city="Bucquoy 62116") Bucquoy 62116
+                    a.list-group-item.lbc-city(data-city="Avesnes-le-Comte 62810") Avesnes-le-Comte 62810
+                    a.list-group-item.lbc-city(data-city="Pas-en-Artois 62760") Pas-en-Artois 62760
+                    a.list-group-item.lbc-city(data-city="Grand-Rullecourt 62810") Grand-Rullecourt 62810
+                    a.list-group-item.lbc-city(data-city="Beaumetz-l%E8s-Loges 62123") Beaumetz-lès-Loges 62123
+                    a.list-group-item.lbc-city(data-city="Izel-les-Hameaux 62690") Izel-les-Hameaux 62690
+                    a.list-group-item.lbc-city(data-city="Berles-Monchel 62690") Berles-Monchel 62690
+                    a.list-group-item.lbc-city(data-city="Aubigny-en-Artois 62690") Aubigny-en-Artois 62690
+                    a.list-group-item.lbc-city(data-city="Habarcq 62123") Habarcq 62123
+                    a.list-group-item.lbc-city(data-city="Duisans 62161") Duisans 62161
+                    a.list-group-item.lbc-city(data-city="Wailly 62217") Wailly 62217
+                    a.list-group-item.lbc-city(data-city="Boiry-Sainte-Rictrude 62175") Boiry-Sainte-Rictrude 62175
+                    a.list-group-item.lbc-city(data-city="H%E9nin-sur-Cojeul 62128") Hénin-sur-Cojeul 62128
+                    a.list-group-item.lbc-city(data-city="Ecurie 62223") Ecurie 62223
+                    a.list-group-item.lbc-city(data-city="Mont-Saint-Eloi 62144") Mont-Saint-Eloi 62144
+                    a.list-group-item.lbc-city(data-city="Tincques 62127") Tincques 62127
+                    a.list-group-item.lbc-city(data-city="Ligny-Saint-Flochel 62127") Ligny-Saint-Flochel 62127
+                    a.list-group-item.lbc-city(data-city="Buneville 62130") Buneville 62130
+                    a.list-group-item.lbc-city(data-city=" Penin 62127") Penin 62127
+                    a.list-group-item.lbc-city(data-city=" Montenescourt 62123") Montenescourt 62123
+                    a.list-group-item.lbc-city(data-city=" Vis-en-Artois 62156") Vis-en-Artois 62156
+            .col-md-8.col-sm-8
+              .row
+                #lbc-pager.col-md-12
+              .row
+                #lbc-content.col-md-12
         #ajax-loader
             img(src="img/ajax-loader.gif")
         script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true")
