@@ -20,7 +20,10 @@ html(lang="fr")
         script(type="x-tmpl-mustache" id="pagerTemplate")
           .panel.panel-default
             .panel-body
-              {{count}} annonce(s)
+              | {{count}} annonce(s) &nbsp;
+              button.btn.btn-primary.pull-right.next
+                | Next
+                span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
 
     body
         #blueimp-gallery.blueimp-gallery
