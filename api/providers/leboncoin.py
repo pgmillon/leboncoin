@@ -1,5 +1,10 @@
+# coding=UTF-8
+from datetime import time
 import urllib2
 import logging
+import time
+import locale
+import re
 from api.entities.House import House
 from bs4 import BeautifulSoup
 
@@ -23,9 +28,10 @@ class LeBonCoinProvider:
                 return int(type.select('span.value b')[0].string.replace(' ', ''))
 
     def list(self, location=None, page=1):
+        locale.setlocale(locale.LC_ALL, "fr_FR.UTF-8")
         houses = []
 
-        logging.info('Getting LeBonCoin page %d', page)
+        logging.info('Getting LeBonCoin page %s', page)
         lbcUrl = "http://www.leboncoin.fr/ventes_immobilieres/offres/nord_pas_de_calais/pas_de_calais/?o=%s&ps=4&pe=8&ret=1" % (str(page))
         if location is not None:
             lbcUrl += "&location=%s" % (location)
@@ -65,6 +71,11 @@ class LeBonCoinProvider:
                 if len(itemSoup.select('[itemprop="latitude"]')) > 0:
                     house.coord = [itemSoup.select('[itemprop="latitude"]')[0]['content'], itemSoup.select('[itemprop="longitude"]')[0]['content']]
                     logging.debug('Found coordinates : %s', house.coord)
+
+                if len(itemSoup.select('.upload_by')) > 0:
+                    uploadRe = re.search('Mise en ligne le (.*)\.', itemSoup.select('.upload_by')[0].text)
+                    house.date = time.strptime(uploadRe.group(1).title(), u'%d %B À %H:%M'.encode('ISO-8859-15'))
+                    logging.debug('Found date : %s', house.date)
                 houses.append(house)
         except Exception, e:
             logging.warning(e)

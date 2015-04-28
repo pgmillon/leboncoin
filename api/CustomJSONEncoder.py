@@ -1,3 +1,4 @@
+from time import strftime
 from api.entities.House import House
 from flask.json import JSONEncoder
 
@@ -14,7 +15,8 @@ class CustomJSONEncoder(JSONEncoder):
                 'zipCode': o.zipCode,
                 'description': o.description,
                 'images': o.images,
-                'coordinates': o.coord
+                'coordinates': o.coord,
+                'uploadDate': strftime('%d/%m - %H:%M', o.date)
                 }
 
         return {}

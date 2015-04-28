@@ -8,7 +8,7 @@ html(lang="fr")
         script(type="x-tmpl-mustache" id="houseTemplate")
             .panel.panel-default
                 .panel-heading
-                    | {{title}} - {{price}} € - &nbsp;
+                    | {{uploadDate}} : {{title}} - {{price}} € &nbsp;
                     a(href="{{url}}") Lien
                 .panel-body
                     | {{description}}
@@ -18,12 +18,15 @@ html(lang="fr")
                             img(src="{{.}}").img-thumbnail
                         | {{/images}}
         script(type="x-tmpl-mustache" id="pagerTemplate")
-          .panel.panel-default
-            .panel-body
-              | {{count}} annonce(s) &nbsp;
-              button.btn.btn-primary.pull-right.next
-                | Next
-                span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
+            .panel.panel-default
+                .panel-body.text-center
+                    button.btn.btn-primary.pull-left.previous
+                        span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
+                        | Previous
+                    | {{count}} annonce(s) sur {{total}} &nbsp;
+                    button.btn.btn-primary.pull-right.next
+                        | Next
+                        span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
 
     body
         #blueimp-gallery.blueimp-gallery

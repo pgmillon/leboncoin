@@ -1,3 +1,6 @@
+import datetime
+from datetime import datetime
+
 
 class House:
 
@@ -10,6 +13,7 @@ class House:
         self._price = 0
         self._coord = []
         self._images = []
+        self._date = datetime.now()
 
     @property
     def url(self):
@@ -70,3 +74,11 @@ class House:
     @coord.setter
     def coord(self, value):
         self._coord = value
+
+    @property
+    def date(self):
+        return self._date
+
+    @date.setter
+    def date(self, value):
+        self._date = value
