@@ -74,9 +74,12 @@ jQuery(document).ready(function($) {
   });
 
   $('.lbc-menu .lbc-city').click(function() {
+    $('.lbc-menu .lbc-city').removeClass('active');
+    $(document).scrollTop(0);
     var city = $(this).data('city');
     console.debug(city);
 
+    $(this).addClass('active');
     $('#lbc-pager').data('page', 1);
     $('#lbc-pager').data('city', city);
 
